@@ -6,6 +6,8 @@ from xgboost import plot_importance
 
 from sklearn.metrics import classification_report
 
+st.logo("assets/logo.jpg")
+
 st.set_page_config(
     page_title="Airlytics",
     page_icon="🌫️"
