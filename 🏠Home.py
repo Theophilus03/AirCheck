@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-st.logo("/content/logo.jpg")
+st.logo("/assets/logo.jpg")
 
 st.set_page_config(
     page_title="Airlytics",
@@ -31,7 +31,7 @@ st.markdown(
 
 #dataset
 if 'data' not in st.session_state:
-  df = pd.read_csv('final.csv')
+  df = pd.read_csv('/assets/final.csv')
   st.session_state.data = df
   df_clean = df.copy()
   df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
@@ -76,7 +76,7 @@ if 'data' not in st.session_state:
   from pytorch_tabnet.tab_model import TabNetClassifier
   import torch
   tabnet = TabNetClassifier()
-  tabnet.load_model('full_tabnet_model.pth.zip')
+  tabnet.load_model('/assets/full_tabnet_model.pth.zip')
   st.session_state.tabnet = tabnet
 
   #ordinal logistic regression
