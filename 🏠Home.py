@@ -32,7 +32,6 @@ st.markdown(
 #dataset
 if 'data' not in st.session_state:
   df = pd.read_csv('assets/final.csv')
-  st.session_state.data = df
   df_clean = df.copy()
   df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
   df_clean = df_clean[['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']]
@@ -40,7 +39,7 @@ if 'data' not in st.session_state:
   for col in ['pm10', 'so2', 'co', 'o3', 'no2']:
       df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
   df_clean = df_clean.dropna()
-
+  st.session_state.data = df_clean
   X = df_clean.drop('kategori', axis=1)
   y = df_clean['kategori']
 
