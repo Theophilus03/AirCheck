@@ -3,6 +3,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
+st.logo("assets/logo.jpg")
+
 st.set_page_config(
     page_title="Airlytics",
     page_icon="🌫️"
