@@ -32,18 +32,7 @@ st.markdown(
 
 #dataset
 if 'data' not in st.session_state:
-  import gdown
-  #download data set
-  url = 'https://drive.google.com/file/d/18ECerLxCHdjyBfVZ78_amDCOPGsx9fMe/view?usp=drive_link'
-  output_path = 'final.csv'
-  data = gdown.download(url, output_path, quiet=False,fuzzy=True)
-
-  #download model
-  url = 'https://drive.google.com/file/d/1sflGUO-iepjGY4gCh21SpqbqzkmkIgRg/view?usp=sharing'
-  output_path = 'full_tabnet_model.pth.zip'
-  gdown.download(url, output_path, quiet=False,fuzzy=True)
-
-  df = pd.read_csv(data)
+  df = pd.read_csv('final.csv')
   st.session_state.data = df
   df_clean = df.copy()
   df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
@@ -88,7 +77,7 @@ if 'data' not in st.session_state:
   from pytorch_tabnet.tab_model import TabNetClassifier
   import torch
   tabnet = TabNetClassifier()
-  tabnet.load_model('/content/full_tabnet_model.pth.zip')
+  tabnet.load_model('full_tabnet_model.pth.zip')
   st.session_state.tabnet = tabnet
 
   #ordinal logistic regression
