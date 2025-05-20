@@ -35,14 +35,14 @@ if 'data' not in st.session_state:
   st.session_state.data = df
   df_clean = df.copy()
   df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
-  df_clean = df_clean[['pm10', 'so2', 'co', 'o3', 'no2', 'categori']]
+  df_clean = df_clean[['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']]
 
   for col in ['pm10', 'so2', 'co', 'o3', 'no2']:
       df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
   df_clean = df_clean.dropna()
 
-  X = df_clean.drop('categori', axis=1)
-  y = df_clean['categori']
+  X = df_clean.drop('kategori', axis=1)
+  y = df_clean['kategori']
 
   #dataset mapping
   ordinal_mapping = {
