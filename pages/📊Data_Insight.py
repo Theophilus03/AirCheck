@@ -9,7 +9,7 @@ from sklearn.metrics import classification_report
 st.logo("assets/logo.png")
 
 st.set_page_config(
-    page_title="Airlytics",
+    page_title="AirCheck",
     page_icon="assets/logo.png"
 )
 
