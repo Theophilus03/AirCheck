@@ -17,7 +17,7 @@ st.title("Data Insight")
 
 # Upload CSV file
 uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
-REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'categori']
+REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
 
 if uploaded_file is not None:
     try:
@@ -45,6 +45,17 @@ ax.set_title("Distribution of Air Quality Categories")
 ax.set_xlabel("Category")
 ax.set_ylabel("Count")
 st.pyplot(fig)
+
+# Display Box Plot
+order = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
+
+df_long = pd.melt(df, id_vars='kategori', value_vars=['no2', 'so2', 'o3', 'pm10', 'co'],
+                  var_name='pollutant', value_name='value')
+
+plt.figure(figsize=(20,6))
+sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=order)
+plt.title('Boxplot Polutan berdasarkan Kategori')
+plt.show()
 
 #analisis model
 labels = [0, 1, 2, 3]
