@@ -7,9 +7,8 @@ st.logo("assets/logo.png")
 
 st.set_page_config(
     page_title="Airlytics",
-    page_icon="🌫️"
+    page_icon="assets/logo.png"
 )
-
 
 st.title("Welcome to AirCheck! 🏠")
 
