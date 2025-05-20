@@ -74,7 +74,6 @@ if 'data' not in st.session_state:
 
   #tabnet
   from pytorch_tabnet.tab_model import TabNetClassifier
-  import torch
   tabnet = TabNetClassifier()
   tabnet.load_model('assets/full_tabnet_model.pth.zip')
   st.session_state.tabnet = tabnet
