@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-st.logo("assets/logo.jpg")
+st.logo("assets/logo.png")
 
 st.set_page_config(
     page_title="Airlytics",
