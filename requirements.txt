@@ -1,3 +1,4 @@
 scikit-learn
 pytorch-tabnet
 statsmodels
+matplotlib
