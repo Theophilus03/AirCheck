@@ -59,7 +59,7 @@ if 'data' not in st.session_state:
   st.session_state.X_test = X_test
   st.session_state.y_train = y_train
   st.session_state.y_test = y_test
-  
+    
   st.write('splitting')
     
   #XGBoost
@@ -72,8 +72,9 @@ if 'data' not in st.session_state:
       n_estimators=100,
   )
   xgboost.fit(X_train, y_train)
+  st.write('selesai trainning')
   st.session_state.xgboost = xgboost
-
+  st.write('dah simpen')
   #tabnet
   from pytorch_tabnet.tab_model import TabNetClassifier
   tabnet = TabNetClassifier()
