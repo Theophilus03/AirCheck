@@ -2,4 +2,5 @@ scikit-learn
 pytorch-tabnet
 statsmodels
 matplotlib
+seaborn
 xgboost
