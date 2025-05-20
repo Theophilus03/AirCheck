@@ -10,7 +10,7 @@ st.logo("assets/logo.png")
 
 st.set_page_config(
     page_title="Airlytics",
-    page_icon="🌫️"
+    page_icon="assets/logo.png"
 )
 
 st.title("Data Insight")
@@ -36,7 +36,7 @@ df = st.session_state.data
 st.write("Data preview:")
 st.write(df.head())  # Show a preview of the CSV data
 
-category_counts = df['categori'].value_counts()
+category_counts = df['kategori'].value_counts()
 
 # Display as a bar chart using matplotlib
 fig, ax = plt.subplots()
