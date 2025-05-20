@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 st.logo("assets/logo.png")
 
 st.set_page_config(
-    page_title="Airlytics",
+    page_title="AirCheck",
     page_icon="assets/logo.png"
 )
 
