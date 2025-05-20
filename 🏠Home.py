@@ -59,6 +59,9 @@ if 'data' not in st.session_state:
   st.session_state.X_test = X_test
   st.session_state.y_train = y_train
   st.session_state.y_test = y_test
+  
+  st.write('splitting')
+    
   #XGBoost
   import xgboost as xgb
   xgboost = xgb.XGBClassifier(
