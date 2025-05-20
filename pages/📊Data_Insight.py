@@ -52,10 +52,10 @@ order = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 df_long = pd.melt(df, id_vars='kategori', value_vars=['no2', 'so2', 'o3', 'pm10', 'co'],
                   var_name='pollutant', value_name='value')
 
-plt.figure(figsize=(20,6))
+fig, ax = plt.subplots()
 sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=order)
 plt.title('Boxplot Polutan berdasarkan Kategori')
-st.pyplot(ptl)
+st.pyplot(fig)
 
 #analisis model
 labels = [0, 1, 2, 3]
