@@ -58,10 +58,20 @@ if 'data' not in st.session_state:
   st.session_state.X_test = X_test
   st.session_state.y_train = y_train
   st.session_state.y_test = y_test
-    
-  st.write('splitting')
-    
-  #XGBoost
+
+#ordinal logistic regression
+if 'ordinal_logistic' not in st.session_state:
+  from statsmodels.miscmodels.ordinal_model import OrderedModel
+  mod_log = OrderedModel(y_train,
+                        X_train,
+                        distr='logit')
+
+  res_log = mod_log.fit(method='bfgs', disp=False)
+  st.session_state.ordianl_logistic = res_log
+
+
+#XGBoost
+if 'xgboost' not in st.session_state:
   import xgboost as xgb
   xgboost = xgb.XGBClassifier(
       objective='multi:softmax',
@@ -74,17 +84,11 @@ if 'data' not in st.session_state:
   st.write('selesai trainning')
   st.session_state.xgboost = xgboost
   st.write('dah simpen')
+    
   #tabnet
+if 'tabnet' not in st.session_state:
   from pytorch_tabnet.tab_model import TabNetClassifier
   tabnet = TabNetClassifier()
   tabnet.load_model('assets/full_tabnet_model.pth.zip')
   st.session_state.tabnet = tabnet
 
-  #ordinal logistic regression
-  from statsmodels.miscmodels.ordinal_model import OrderedModel
-  mod_log = OrderedModel(y_train,
-                        X_train,
-                        distr='logit')
-
-  res_log = mod_log.fit(method='bfgs', disp=False)
-  st.session_state.ordianl_logistic = res_log
