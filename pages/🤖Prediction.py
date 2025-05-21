@@ -42,7 +42,7 @@ def main():
         }
         if st.button('Predict'):
           if model_option == 'Ordinal Linear Regression':
-            ordianl_logistic = st.session_state.ordianl_logistic
+            ordianl_logistic = st.session_state.ordinal_logistic
             y_prob = ordianl_logistic.predict(model_input)
             y_pred = np.argmax(y_prob, axis=1)
             prediction = ordinal_mapping[int(y_pred)]
