@@ -65,9 +65,8 @@ if 'ordinal_logistic' not in st.session_state:
   mod_log = OrderedModel(y_train,
                         X_train,
                         distr='logit')
-
   res_log = mod_log.fit(method='bfgs', disp=False)
-  st.session_state.ordianl_logistic = res_log
+  st.session_state.ordinal_logistic = res_log
 
 
 #XGBoost
