@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import base64
 from sklearn.model_selection import train_test_split
 
 def image_to_base64(img_path):
