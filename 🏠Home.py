@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+def image_to_base64(img_path):
+    with open(img_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode('utf-8')
 st.logo("assets/logo.png")
 
 st.set_page_config(
