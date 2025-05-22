@@ -10,8 +10,11 @@ st.set_page_config(
     page_icon="assets/logo.png"
 )
 
-st.image("assets/logo.png", width=75)
-st.title("AirCheck")
+icon_url = f"data:image/png;base64,{image_to_base64('assets/logo.png')}"
+title_text = "AirCheck"
+
+st.markdown(f'<img src="{icon_url}" style="vertical-align:middle; display:inline; margin-right:10px; width:40px; height:40px;"> <span style="font-size: 30px; vertical-align:middle;"><strong>{title_text}</strong></span>', unsafe_allow_html=True)
+
 # First section: What is AirCheck?
 st.subheader("What is AirCheck?")
 st.write("AirCheck adalah platform analisis kualitas udara yang menggunakan data konsentrasi polutan untuk memberikan wawasan mendalam tentang kondisi udara.")
