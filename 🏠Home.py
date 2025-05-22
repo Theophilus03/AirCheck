@@ -10,8 +10,9 @@ st.set_page_config(
     page_icon="assets/logo.png"
 )
 
-st.title("Welcome to AirCheck! 🏠")
-
+col1, col2 = st.columns((6, 1))
+col1.title("AirCheck")
+col2.image("assets/logo.png", width=120)
 # First section: What is AirCheck?
 st.subheader("What is AirCheck?")
 st.write("AirCheck adalah platform analisis kualitas udara yang menggunakan data konsentrasi polutan untuk memberikan wawasan mendalam tentang kondisi udara.")
