@@ -69,8 +69,8 @@ if 'data' not in st.session_state:
 #ordinal logistic regression
 if 'ordinal_logistic' not in st.session_state:
   from statsmodels.miscmodels.ordinal_model import OrderedModel
-  mod_log = OrderedModel(y_train,
-                        X_train,
+  mod_log = OrderedModel(st.session_state.y_train,
+                        st.session_state.X_train,
                         distr='logit')
   res_log = mod_log.fit(method='bfgs', disp=False)
   st.session_state.ordinal_logistic = res_log
@@ -86,7 +86,7 @@ if 'xgboost' not in st.session_state:
       learning_rate=0.001,
       n_estimators=100,
   )
-  xgboost.fit(X_train, y_train)
+  xgboost.fit(st.session_state.X_train, st.session_state.y_train)
   st.write('selesai trainning')
   st.session_state.xgboost = xgboost
   st.write('dah simpen')
