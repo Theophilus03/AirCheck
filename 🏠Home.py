@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 
-with st.spinner("Wait for it...", show_time=True):
+with st.spinner("Wait for it..."):
     #dataset
     if 'data' not in st.session_state:
       df = pd.read_csv('assets/final.csv')
@@ -68,9 +68,7 @@ with st.spinner("Wait for it...", show_time=True):
           n_estimators=100,
       )
       xgboost.fit(st.session_state.X_train, st.session_state.y_train)
-      st.write('selesai trainning')
       st.session_state.xgboost = xgboost
-      st.write('dah simpen')
         
       #tabnet
     if 'tabnet' not in st.session_state:
