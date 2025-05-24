@@ -107,7 +107,8 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-st.table(metrics_df)
+metrics_df = metrics_df.reset_index(drop=True)
+st.dataframe(metrics_df)  
 
 #Naive Bayes
 st.title("Naive Bayes")
@@ -120,7 +121,8 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-st.table(metrics_df)
+metrics_df = metrics_df.reset_index(drop=True)
+st.dataframe(metrics_df)  
 
 #XGBoost
 st.title("XGBoost")
@@ -133,7 +135,8 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-st.table(metrics_df)
+metrics_df = metrics_df.reset_index(drop=True)
+st.dataframe(metrics_df)  
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax)  # show top 10 features
@@ -152,4 +155,5 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-st.table(metrics_df)
+metrics_df = metrics_df.reset_index(drop=True)
+st.dataframe(metrics_df)  
