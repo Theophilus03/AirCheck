@@ -16,6 +16,36 @@ st.set_page_config(
 
 st.title("Data Insight")
 
+
+def split_data(df):
+    df_clean = df.copy()
+    df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
+    df_clean = df_clean[['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']]
+    
+    for col in ['pm10', 'so2', 'co', 'o3', 'no2']:
+      df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
+    df_clean = df_clean.dropna()
+    st.session_state.data = df_clean
+    X = df_clean.drop('kategori', axis=1)
+    y = df_clean['kategori']
+    
+    #dataset mapping
+    ordinal_mapping = {
+      'BAIK': 0,
+      'SEDANG': 1,
+      'TIDAK SEHAT': 2,
+      'SANGAT TIDAK SEHAT': 3
+    }
+    
+    y_encoded = y.map(ordinal_mapping)
+    
+    #data splitting
+    X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42, stratify=y)
+    st.session_state.X_train = X_train
+    st.session_state.X_test = X_test
+    st.session_state.y_train = y_train
+    st.session_state.y_test = y_test
+
 # Upload CSV file
 uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
 REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
@@ -30,6 +60,10 @@ if uploaded_file is not None:
         else:
             st.session_state.data = df
             st.success("Data uploaded and validated successfully!")
+            with st.spinner("Wait for it..."):
+                split_data(df)
+                
+                
     except Exception as e:
         st.error(f"Error reading file: {e}")
 
@@ -62,29 +96,61 @@ st.pyplot(fig)
 labels = [0, 1, 2, 3]
 target_names = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 
+#Ordinal Logistic Regression
 st.title("Ordinal Logistic Regression")
 y_pred = st.session_state.ordianl_logistic.predict(st.session_state.X_test)
 y_pred = np.argmax(y_pred, axis=1)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
-                                    labels=labels, target_names=target_names)
-st.text('Model Report:\n    ' +result_test)
+                                    labels=labels, target_names=target_names, output_dict=True)
+metrics_df = pd.DataFrame({
+    "Precision": [result_test['macro avg']['precision']],
+    "Recall": result_test['macro avg']['recall'],
+    "f1-score": result_test['macro avg']['f1-score'],
+    "Accuracy": result_test['accuracy']
+    })
+st.table(metrics_df)
 
+#Naive Bayes
+st.title("Naive Bayes")
+y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
+result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
+                                    labels=labels, target_names=target_names, output_dict=True)
+metrics_df = pd.DataFrame({
+    "Precision": [result_test['macro avg']['precision']],
+    "Recall": result_test['macro avg']['recall'],
+    "f1-score": result_test['macro avg']['f1-score'],
+    "Accuracy": result_test['accuracy']
+    })
+st.table(metrics_df)
 
-st.title("XG Boost")
-y_pred2 = st.session_state.xgboost.predict(st.session_state.X_test)
-result_test2 = classification_report(st.session_state.y_test, y_pred2, digits=4,
-                                    labels=labels, target_names=target_names,
-                                    output_dict=True)
-st.dataframe( pd.DataFrame(result_test2).transpose())
-
+#XGBoost
+st.title("XGBoost")
+y_pred = st.session_state.xgboost.predict(st.session_state.X_test)
+result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
+                                    labels=labels, target_names=target_names, output_dict=True)
+metrics_df = pd.DataFrame({
+    "Precision": [result_test['macro avg']['precision']],
+    "Recall": result_test['macro avg']['recall'],
+    "f1-score": result_test['macro avg']['f1-score'],
+    "Accuracy": result_test['accuracy']
+    })
+st.table(metrics_df)
+#Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax)  # show top 10 features
 st.pyplot(fig)
 
+
+#TabNet
 st.title("TabNet")
 tabnet = st.session_state.tabnet
-y_pred3 = tabnet.predict(st.session_state.X_test)
-result_test3 = classification_report(st.session_state.y_test, y_pred3, digits=4,
-                                    labels=labels, target_names=target_names,
-                                    output_dict=True)
-st.dataframe( pd.DataFrame(result_test3).transpose())
+y_pred = st.session_state.tabnet.predict(st.session_state.X_test)
+result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
+                                    labels=labels, target_names=target_names, output_dict=True)
+metrics_df = pd.DataFrame({
+    "Precision": [result_test['macro avg']['precision']],
+    "Recall": result_test['macro avg']['recall'],
+    "f1-score": result_test['macro avg']['f1-score'],
+    "Accuracy": result_test['accuracy']
+    })
+st.table(metrics_df)
