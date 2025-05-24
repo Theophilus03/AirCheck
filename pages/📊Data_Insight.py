@@ -60,8 +60,7 @@ if uploaded_file is not None:
         else:
             st.session_state.data = df
             st.success("Data uploaded and validated successfully!")
-            with st.spinner("Wait for it..."):
-                split_data(df)
+            split_data(df)
                 
                 
     except Exception as e:
@@ -98,7 +97,7 @@ target_names = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 
 #Ordinal Logistic Regression
 st.title("Ordinal Logistic Regression")
-y_pred = st.session_state.ordianl_logistic.predict(st.session_state.X_test)
+y_pred = st.session_state.ordinal_logistic.predict(st.session_state.X_test)
 y_pred = np.argmax(y_pred, axis=1)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
