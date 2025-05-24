@@ -20,7 +20,7 @@ st.set_page_config(
 )
 
 
-with st.spinner("Wait for it..."):
+with st.spinner("Wait for it...", show_time=False):
     #dataset
     if 'data' not in st.session_state:
         df = pd.read_csv('assets/final.csv')
