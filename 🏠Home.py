@@ -52,7 +52,7 @@ with st.spinner("Wait for it..."):
         st.session_state.y_train = y_train
         st.session_state.y_test = y_test
     #naive bayes
-    if 'naive_bayes' not in st.session_state":
+    if 'naive_bayes' not in st.session_state:
         nb = GaussianNB()
         nb.fit( st.session_state.X_train,  st.session_state.y_train)
         st.session_state.naive_bayes = nb
