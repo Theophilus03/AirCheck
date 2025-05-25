@@ -107,8 +107,10 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-style = metrics_df.style.hide_index()
-st.write(styler.to_html(), unsafe_allow_html=True)
+
+metrics_df.index = [''] * len(metrics_df)
+st.table(metrics_df)
+
 #Naive Bayes
 st.title("Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
