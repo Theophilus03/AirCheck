@@ -137,7 +137,8 @@ metrics_df = pd.DataFrame({
     "Accuracy": result_test['accuracy']
     })
 metrics_df = metrics_df.reset_index(drop=True)
-st.dataframe(metrics_df)  
+st.markdown(metrics_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax)  # show top 10 features
