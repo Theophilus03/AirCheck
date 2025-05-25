@@ -107,7 +107,7 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-metrics_df = metrics_df.reset_index(drop=True)
+metrics_df.index = [''] * len(df)
 st.dataframe(metrics_df)  
 
 #Naive Bayes
