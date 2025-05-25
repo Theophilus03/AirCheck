@@ -13,11 +13,11 @@ st.set_page_config(
 def get_input_values():
     pm10 = st.slider('PM10', min_value=0, max_value=500, value=50)
     so2 = st.slider('SO2', min_value=0, max_value=500, value=50)
-    no2 = st.slider('NO2', min_value=0, max_value=500, value=50)
     co = st.slider('CO', min_value=0, max_value=500, value=50)
     o3 = st.slider('O3', min_value=0, max_value=500, value=50)
+    no2 = st.slider('NO2', min_value=0, max_value=500, value=50)
 
-    return np.array([[pm10, so2, no2, co, o3]])
+    return np.array([[pm10, so2, co, o3, no2]])
 
 #Main
 def main():
