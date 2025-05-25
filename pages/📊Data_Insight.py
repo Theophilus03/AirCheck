@@ -68,7 +68,7 @@ if uploaded_file is not None:
 
 df = st.session_state.data
 st.write("Data preview:")
-st.write(df.head())  # Show a preview of the CSV data
+st.dataframe(df.head(), hide_index=True)  # Show a preview of the CSV data
 
 category_counts = df['kategori'].value_counts()
 
@@ -107,9 +107,7 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-
-metrics_df.index = [''] * len(metrics_df)
-st.table(metrics_df)
+st.dataframe(metrics_df, hide_index=True)
 
 #Naive Bayes
 st.title("Naive Bayes")
@@ -135,8 +133,8 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-metrics_df = metrics_df.reset_index(drop=True)
-st.markdown(metrics_df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
+st.dataframe(metrics_df, hide_index=True)
+
 
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
@@ -155,8 +153,8 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-metrics_df = metrics_df.reset_index(drop=True)
-st.dataframe(metrics_df)  
+st.dataframe(metrics_df, hide_index=True)
+
 
 
 
