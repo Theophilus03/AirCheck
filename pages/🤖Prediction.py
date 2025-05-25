@@ -49,7 +49,7 @@ def main():
               
           elif model_option == 'Naive Bayes':
             nb = st.session_state.naive_bayes
-            y_pred = xgboost.predict(model_input)
+            y_pred = nb.predict(model_input)
             prediction = ordinal_mapping[int(y_pred[0])]
 
           elif model_option == 'XG Boost':
