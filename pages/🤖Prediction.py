@@ -31,7 +31,7 @@ def main():
 
 
         # Model selection dropdown
-        model_option = st.selectbox('Model Prediction', ('Ordinal Linear Regression', 'XG Boost', 'Tab Net'))
+        model_option = st.selectbox('Model Prediction', ('Ordinal Linear Regression', 'Naive Bayes','XG Boost', 'Tab Net'))
 
         # Predict button
         ordinal_mapping = {
@@ -46,6 +46,11 @@ def main():
             y_prob = ordianl_logistic.predict(model_input)
             y_pred = np.argmax(y_prob, axis=1)
             prediction = ordinal_mapping[int(y_pred)]
+              
+          elif model_option == 'Naive Bayes':
+            nb = st.session_state.naive_bayes
+            y_pred = xgboost.predict(model_input)
+            prediction = ordinal_mapping[int(y_pred[0])]
 
           elif model_option == 'XG Boost':
             xgboost = st.session_state.xgboost
