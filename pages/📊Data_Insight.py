@@ -122,7 +122,7 @@ metrics_df = pd.DataFrame({
     "f1-score": result_test['macro avg']['f1-score'],
     "Accuracy": result_test['accuracy']
     })
-st.dataframe(metrics_df.set_index(metrics_df.columns[0]))
+st.dataframe(metrics_df, hide_index=True)
 
 #XGBoost
 st.title("XGBoost")
