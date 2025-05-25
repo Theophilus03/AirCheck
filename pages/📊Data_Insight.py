@@ -145,7 +145,6 @@ st.pyplot(fig)
 
 #TabNet
 st.title("TabNet")
-tabnet = st.session_state.tabnet
 y_pred = st.session_state.tabnet.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
