@@ -93,7 +93,7 @@ if uploaded_file is not None:
                   learning_rate=0.001,
                   n_estimators=100,
                 )
-                xgboost.fit(st.session_state.X_train, st.session_state.y_train)
+                xgboost.fit(X_train, y_train)
                 st.session_state.xgboost = xgboost
             
             #tabnet
