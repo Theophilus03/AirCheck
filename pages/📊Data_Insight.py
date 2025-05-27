@@ -7,6 +7,7 @@ from xgboost import plot_importance
 from sklearn.model_selection import train_test_split
 
 from sklearn.metrics import classification_report
+import torch
 
 from statsmodels.miscmodels.ordinal_model import OrderedModel
 from sklearn.naive_bayes import GaussianNB
