@@ -70,29 +70,33 @@ if uploaded_file is not None:
             split_data(df)
 
             #naive bayes
-            nb = GaussianNB()
-            nb.fit( st.session_state.X_train,  st.session_state.y_train)
-            st.session_state.naive_bayes = nb
+            with st.spinner("Training Naive Bayes Model...", show_time=False):
+                nb = GaussianNB()
+                nb.fit( st.session_state.X_train,  st.session_state.y_train)
+                st.session_state.naive_bayes = nb
             
             #ordinal logistic regression
-            mod_log = OrderedModel(st.session_state.y_train,
-                                    st.session_state.X_train,
-                                    distr='logit')
-            res_log = mod_log.fit(method='bfgs', disp=False)
-            st.session_state.ordinal_logistic = res_log
+            with st.spinner("Training Ordinal Logistic Regression Model...", show_time=False):
+                mod_log = OrderedModel(st.session_state.y_train,
+                                        st.session_state.X_train,
+                                        distr='logit')
+                res_log = mod_log.fit(method='bfgs', disp=False)
+                st.session_state.ordinal_logistic = res_log
         
-            #XGBoos
-            xgboost = xgb.XGBClassifier(
-              objective='multi:softmax',
-              num_class=4,
-              max_depth=25,
-              learning_rate=0.001,
-              n_estimators=100,
-            )
-            xgboost.fit(st.session_state.X_train, st.session_state.y_train)
-            st.session_state.xgboost = xgboost
+            #XGBoost
+            with st.spinner("Training XGBoost Model...", show_time=False):
+                xgboost = xgb.XGBClassifier(
+                  objective='multi:softmax',
+                  num_class=4,
+                  max_depth=25,
+                  learning_rate=0.001,
+                  n_estimators=100,
+                )
+                xgboost.fit(st.session_state.X_train, st.session_state.y_train)
+                st.session_state.xgboost = xgboost
             
             #tabnet
+            with st.spinner("Training TabNet Model...", show_time=False):
             tabnet = clf = TabNetClassifier(
                             n_d=10,  # Dimension of the decision prediction layer
                             n_a=10,  # Dimension of the attention embedding layer
