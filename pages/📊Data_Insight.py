@@ -8,6 +8,12 @@ from sklearn.model_selection import train_test_split
 
 from sklearn.metrics import classification_report
 
+from statsmodels.miscmodels.ordinal_model import OrderedModel
+from sklearn.naive_bayes import GaussianNB
+import xgboost as xgb
+from pytorch_tabnet.tab_model import TabNetClassifier
+
+
 st.logo("assets/logo.png")
 
 st.set_page_config(
