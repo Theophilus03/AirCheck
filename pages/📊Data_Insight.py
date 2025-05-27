@@ -97,29 +97,29 @@ if uploaded_file is not None:
             
             #tabnet
             with st.spinner("Training TabNet Model...", show_time=False):
-            tabnet = clf = TabNetClassifier(
-                            n_d=10,  # Dimension of the decision prediction layer
-                            n_a=10,  # Dimension of the attention embedding layer
-                            n_steps= 5,  # Number of steps in the architecture
-                            lambda_sparse=1e-3,  # Sparsity regularization
-                            optimizer_params=dict(lr=5e-2),  # Optimizer params
-                            mask_type='entmax',  # Can also be 'sparsemax'
-                            scheduler_params={"step_size":10, "gamma":0.5},  # Learning rate scheduler
-                            scheduler_fn=torch.optim.lr_scheduler.StepLR
+                tabnet = clf = TabNetClassifier(
+                                n_d=10,  # Dimension of the decision prediction layer
+                                n_a=10,  # Dimension of the attention embedding layer
+                                n_steps= 5,  # Number of steps in the architecture
+                                lambda_sparse=1e-3,  # Sparsity regularization
+                                optimizer_params=dict(lr=5e-2),  # Optimizer params
+                                mask_type='entmax',  # Can also be 'sparsemax'
+                                scheduler_params={"step_size":10, "gamma":0.5},  # Learning rate scheduler
+                                scheduler_fn=torch.optim.lr_scheduler.StepLR
+                                )
+                tabnet.fit(
+                            X_train.values, y_train.values,
+                            eval_set=[(X_test.values, y_test.values)],
+                            eval_name=['valid'],
+                            eval_metric=['accuracy'],
+                            max_epochs=100,  # Maximum number of epochs
+                            patience=10,  # Early stopping patience
+                            batch_size=128,  # Mini-batch size
+                            virtual_batch_size=128,  # Virtual batch size
+                            num_workers=0,
+                            drop_last=False  # Drop last batch if it is incomplete
                             )
-            tabnet.fit(
-                        X_train.values, y_train.values,
-                        eval_set=[(X_test.values, y_test.values)],
-                        eval_name=['valid'],
-                        eval_metric=['accuracy'],
-                        max_epochs=100,  # Maximum number of epochs
-                        patience=10,  # Early stopping patience
-                        batch_size=128,  # Mini-batch size
-                        virtual_batch_size=128,  # Virtual batch size
-                        num_workers=0,
-                        drop_last=False  # Drop last batch if it is incomplete
-                        )
-            st.session_state.tabnet = tabnet
+                st.session_state.tabnet = tabnet
 
                 
                 
