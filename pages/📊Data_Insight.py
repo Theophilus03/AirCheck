@@ -76,6 +76,12 @@ category_counts = df['kategori'].value_counts()
 # Display as a bar chart using matplotlib
 fig, ax = plt.subplots()
 category_counts.plot(kind='bar', ax=ax, color='skyblue')
+
+for p in ax.patches:
+    count = int(p.get_height())
+    ax.text(p.get_x() + p.get_width() / 2, p.get_height() + 1, 
+            str(count), ha='center', va='bottom')
+    
 ax.set_title("Distribution of Air Quality Categories")
 ax.set_xlabel("Category")
 ax.set_ylabel("Count")
