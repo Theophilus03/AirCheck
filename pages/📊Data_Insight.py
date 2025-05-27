@@ -73,7 +73,7 @@ st.dataframe(df.head(), hide_index=True)  # Show a preview of the CSV data
 
 category_counts = df['kategori'].value_counts()
 
-# Display as a bar chart using matplotlib
+# Count Plot
 fig, ax = plt.subplots()
 category_counts.plot(kind='bar', ax=ax, color='skyblue')
 
@@ -87,7 +87,7 @@ ax.set_xlabel("Category")
 ax.set_ylabel("Count")
 st.pyplot(fig)
 
-# Display Box Plot
+# Box Plot
 order = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 
 df_long = pd.melt(df, id_vars='kategori', value_vars=['no2', 'so2', 'o3', 'pm10', 'co'],
@@ -98,7 +98,8 @@ sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=or
 ax.set_title('Boxplot Polutan berdasarkan Kategori')
 st.pyplot(fig)
 
-#analisis model
+
+##analisis model
 labels = [0, 1, 2, 3]
 target_names = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 
@@ -116,6 +117,11 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
+st.markdown("<b><u>Uji Signifikansi Serentak</u></b>", unsafe_allow_html=True)
+
+st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
+
+st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
 #Naive Bayes
 st.title("Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
@@ -142,7 +148,7 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
-
+st.markdown("<b><u>Feature Importance</u></b>", unsafe_allow_html=True)
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax)  # show top 10 features
