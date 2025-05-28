@@ -111,7 +111,7 @@ if uploaded_file is not None:
                                 )
                 tabnet.fit(
                             st.session_state.X_train.values, st.session_state.y_train.values,
-                            eval_set=[(X_test.values, y_test.values)],
+                            eval_set=[(st.session_state.values, st.session_state.values)],
                             eval_name=['valid'],
                             eval_metric=['accuracy'],
                             max_epochs=100,  # Maximum number of epochs
