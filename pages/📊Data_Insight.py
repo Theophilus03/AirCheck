@@ -99,7 +99,7 @@ if uploaded_file is not None:
             
             #tabnet
             with st.spinner("Training TabNet Model...", show_time=False):
-                tabnet = clf = TabNetClassifier(
+                tabnet = TabNetClassifier(
                                 n_d=10,  # Dimension of the decision prediction layer
                                 n_a=10,  # Dimension of the attention embedding layer
                                 n_steps= 5,  # Number of steps in the architecture
