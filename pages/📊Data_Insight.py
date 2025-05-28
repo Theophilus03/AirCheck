@@ -110,7 +110,7 @@ if uploaded_file is not None:
                                 scheduler_fn=torch.optim.lr_scheduler.StepLR
                                 )
                 tabnet.fit(
-                            X_train.values, y_train.values,
+                            st.session_state.X_train.values, st.session_state.y_train.values,
                             eval_set=[(X_test.values, y_test.values)],
                             eval_name=['valid'],
                             eval_metric=['accuracy'],
