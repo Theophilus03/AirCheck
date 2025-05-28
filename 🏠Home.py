@@ -67,14 +67,8 @@ with st.spinner("Wait for it...", show_time=False):
     
     #XGBoost
     if 'xgboost' not in st.session_state:
-        xgboost = xgb.XGBClassifier(
-          objective='multi:softmax',
-          num_class=4,
-          max_depth=25,
-          learning_rate=0.001,
-          n_estimators=100,
-        )
-        xgboost.fit(st.session_state.X_train, st.session_state.y_train)
+        xgboost = xgb.XGBClassifier()
+        xgboost.load_model('assets/xgb_model.json')
         st.session_state.xgboost = xgboost
         
       #tabnet
