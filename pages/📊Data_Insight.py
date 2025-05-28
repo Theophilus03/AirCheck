@@ -83,20 +83,7 @@ if uploaded_file is not None:
                                         distr='logit')
                 res_log = mod_log.fit(method='bfgs', disp=False)
                 st.session_state.ordinal_logistic = res_log
-        
-            #XGBoost
-            with st.spinner("Training XGBoost Model...", show_time=False):
-                xgboost = xgb.XGBClassifier(
-                  objective='multi:softmax',
-                  num_class=4,
-                  max_depth=25,
-                  learning_rate=0.001,
-                  n_estimators=100,
-                )
-                xgboost.fit( st.session_state.X_train,  st.session_state.y_train)
-                st.write("test")
-                st.session_state.xgboost = xgboost
-            
+    
             #tabnet
             with st.spinner("Training TabNet Model...", show_time=False):
                 tabnet = TabNetClassifier(
@@ -122,6 +109,20 @@ if uploaded_file is not None:
                             drop_last=False  # Drop last batch if it is incomplete
                             )
                 st.session_state.tabnet = tabnet
+            
+            #XGBoost
+            with st.spinner("Training XGBoost Model...", show_time=False):
+                xgboost = xgb.XGBClassifier(
+                  objective='multi:softmax',
+                  num_class=4,
+                  max_depth=25,
+                  learning_rate=0.001,
+                  n_estimators=100,
+                )
+                xgboost.fit( st.session_state.X_train,  st.session_state.y_train)
+                st.write("test")
+                st.session_state.xgboost = xgboost
+            
 
                 
                 
