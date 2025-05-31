@@ -14,6 +14,7 @@ from sklearn.naive_bayes import GaussianNB
 import xgboost as xgb
 from pytorch_tabnet.tab_model import TabNetClassifier
 
+from load_data import load_data
 
 st.logo("assets/logo.png")
 
@@ -128,6 +129,9 @@ if uploaded_file is not None:
                 
     except Exception as e:
         st.error(f"Error reading file: {e}")
+
+
+load_data()
 
 df = st.session_state.data
 st.write("Data preview:")
