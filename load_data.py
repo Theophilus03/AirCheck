@@ -9,7 +9,7 @@ import xgboost as xgb
 from pytorch_tabnet.tab_model import TabNetClassifier
 
 
-def load(){
+def load_data(){
     if 'data' not in st.session_state:
         df = pd.read_csv('assets/final.csv')
         df_clean = df.copy()
