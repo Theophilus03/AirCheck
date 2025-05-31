@@ -14,7 +14,7 @@ from sklearn.naive_bayes import GaussianNB
 import xgboost as xgb
 from pytorch_tabnet.tab_model import TabNetClassifier
 
-from load_data import load_data
+from utils.load_data import load_data
 
 st.logo("assets/logo.png")
 
