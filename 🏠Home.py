@@ -28,7 +28,15 @@ st.markdown(
      Kami menyediakan analisis data historis terkait konsentrasi polutan seperti PM10, CO, NO2, O3, dan SO2. Dengan EDA, Anda dapat memahami pola, tren, dan korelasi antar polutan. Anda juga bisa mengupload dataset anda sendiri untuk mendapatkan data insight dan prediksi yang lebih tepat untuk daerah anda.
 
     - **Air Quality Predictor**
-     Kami menggunakan berbagai model statistik dan machine learning untuk menganalisis kualitas udara dan memprediksi perubahan kualitas udara di masa depan berdasarkan data polutan.
+     Kami menggunakan berbagai model statistik dan machine learning untuk memprediksi kualitas udara berdasarkan data polutan.
     """
 )
 
+st.subheader("Data Source?")
+st.markdown(
+    """
+Populasi dalam penelitian ini adalah data kualitas udara di Provinsi DKI Jakarta. Adapun sampel yang digunakan mencakup data dari tahun 2018 hingga 2024, 
+yang diperoleh melalui teknik non-probability sampling (convenience sampling), dengan total data sebanyak 7,076 yang menggunakan data sekunder yang diperoleh dari situs Satu Data Indonesia. 
+Data sekunder merupakan data yang didapatkan secara tidak langsung dari objek penelitian yang dimana data tersebut didapatkan dari sebuah situs internet ataupun sebuah referensi.
+    """
+)
