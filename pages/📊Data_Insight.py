@@ -207,7 +207,7 @@ st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
 st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
 
 #Naive Bayes
-st.header("Gaussian Naive Bayes")
+st.markdown("#### Gaussian Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
