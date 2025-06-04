@@ -200,9 +200,9 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
-st.markdown("#### Uji Signifikansi Serentak")
-st.markdown("#### Uji Signifikansi Partial")
-st.markdown("#### Uji Multikolinearitas")
+st.markdown("#### - Uji Signifikansi Serentak")
+st.markdown("#### - Uji Signifikansi Partial")
+st.markdown("#### - Uji Multikolinearitas")
 
 
 #Naive Bayes
@@ -219,7 +219,7 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
-st.markdown("#### Gaussian Distribution Plot")
+st.markdown("#### - Gaussian Distribution Plot")
 num_classes = len(np.unique(st.session_state.y_test)) 
 variable = st.session_state.X_test.columns.values
 
@@ -248,7 +248,7 @@ for feature_index in range(st.session_state.X_test.shape[1]):
 axes[-1].axis('off')
 plt.tight_layout()
 st.pyplot(plt)
-st.write(""""Gaussian distribution plot yang menggunakan PDF (Probability Density Function) untuk 
+st.write("""Gaussian distribution plot yang menggunakan PDF (Probability Density Function) untuk 
 menunjukkan kurva distribusi probabilitas dari setiap kelas, yang digunakan untuk menghitung 
 kemungkinan kelas berdasarkan data input yang diberikan.""")
 
