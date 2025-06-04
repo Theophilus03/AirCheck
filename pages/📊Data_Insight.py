@@ -14,7 +14,7 @@ from sklearn.naive_bayes import GaussianNB
 import xgboost as xgb
 from pytorch_tabnet.tab_model import TabNetClassifier
 
-from utils.load_data import load_data
+from utils.load_data import load_data, explain_countplot
 
 st.logo("assets/logo.png")
 
@@ -147,11 +147,14 @@ for p in ax.patches:
     count = int(p.get_height())
     ax.text(p.get_x() + p.get_width() / 2, p.get_height() + 1, 
             str(count), ha='center', va='bottom')
-    
+
 ax.set_title("Distribution of Air Quality Categories")
 ax.set_xlabel("Category")
 ax.set_ylabel("Count")
 st.pyplot(fig)
+
+explanation_text = explain_countplot(category_counts)
+st.write(explanation_text)
 
 # Box Plot
 order = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
