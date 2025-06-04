@@ -221,13 +221,14 @@ st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
 num_classes = len(np.unique(st.session_state.y_test)) 
+variable = st.session_state.X_test.columns.values
 
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 axes = axes.flatten()
 gnb = st.session_state.naive_bayes
 for feature_index in range(st.session_state.X_test.shape[1]):
     ax = axes[feature_index]
-    feature_name = target_names[feature_index]
+    feature_name = variable[feature_index]
     
     x_vals = np.linspace(st.session_state.X_test.iloc[:, feature_index].min(), st.session_state.X_test.iloc[:, feature_index].max(), 200)
 
