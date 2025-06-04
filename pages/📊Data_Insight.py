@@ -166,7 +166,8 @@ fig, ax = plt.subplots()
 sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=order)
 ax.set_title('Boxplot Polutan berdasarkan Kategori')
 st.pyplot(fig)
-
+st.write("kita bisa membandingkan distribusi antar kelompok. Ini bisa menunjukkan apakah ada perbedaan yang 
+signifikan antara kelompok-kelompok tersebut, misalnya perbedaan dalam median, rentang, atau adanya outlier ")
 
 ##analisis model
 labels = [0, 1, 2, 3]
