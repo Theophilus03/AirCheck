@@ -250,25 +250,3 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 
-
-
-
-# Inject custom JavaScript to hide the index column
-hide_index_js = """
-<script>
-    const tables = window.parent.document.querySelectorAll('table');
-    tables.forEach(table => {
-        const indexColumn = table.querySelector('thead th:first-child');
-        if (indexColumn) {
-            indexColumn.style.display = 'none';
-        }
-        const indexCells = table.querySelectorAll('tbody th');
-        indexCells.forEach(cell => {
-            cell.style.display = 'none';
-        });
-    });
-</script>
-"""
-
-# Use components.html to inject the JavaScript
-st.components.v1.html(hide_index_js, height=0)
