@@ -65,3 +65,25 @@ def load_data():
         tabnet = TabNetClassifier()
         tabnet.load_model('assets/full_tabnet_model.pth.zip')
         st.session_state.tabnet = tabnet
+
+
+def explain_countplot(category_counts):
+    total = category_counts.sum()
+    max_cat = category_counts.idxmax()
+    max_count = category_counts.max()
+    min_cat = category_counts.idxmin()
+    min_count = category_counts.min()
+    
+    prop_max = max_count / total
+    prop_min = min_count / total
+    
+    explanation = []
+    explanation.append(f"Dari total {total} data, kategori '{max_cat}' adalah yang paling banyak dengan jumlah {max_count} ({prop_max:.1%} dari total).")
+    explanation.append(f"Kategori '{min_cat}' memiliki jumlah paling sedikit, yaitu {min_count} ({prop_min:.1%} dari total).")
+    
+    if prop_max - prop_min > 0.2:
+        explanation.append("Distribusi kategori ini cukup tidak seimbang.")
+    else:
+        explanation.append("Distribusi kategori ini relatif seimbang.")
+    
+    return " ".join(explanation)
