@@ -205,7 +205,7 @@ st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
 
 st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
 #Naive Bayes
-st.title("Naive Bayes")
+st.title("Gaussian Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
@@ -216,6 +216,33 @@ metrics_df = pd.DataFrame({
     "Accuracy": result_test['accuracy']
     })
 st.dataframe(metrics_df, hide_index=True)
+
+#Gaussian Distribution plot
+fig, axes = plt.subplots(2, 3, figsize=(18, 10))
+axes = axes.flatten()
+for feature_index in range(num_features):
+    ax = axes[feature_index]
+    feature_name = feature_names[feature_index]
+    x_vals = np.linspace(X_np[:, feature_index].min(), X_np[:, feature_index].max(), 200)
+
+    for cls in range(num_classes):
+        mean = gnb.theta_[cls, feature_index]
+        std = np.sqrt(gnb.var_[cls, feature_index])
+        y_vals = norm.pdf(x_vals, mean, std)
+        ax.plot(x_vals, y_vals, label=f"Class {cls} ({class_names[cls]})")
+
+    ax.set_title(f"Gaussian Distribution - {feature_name}")
+    ax.set_xlabel(feature_name)
+    ax.set_ylabel("Probability Density")
+    ax.grid(True)
+    ax.legend(fontsize='small')
+
+axes[-1].axis('off')
+plt.tight_layout()
+st.pyplot(plt)
+st.write(""""Gaussian distribution plot yang menggunakan PDF (Probability Density Function) untuk 
+menunjukkan kurva distribusi probabilitas dari setiap kelas, yang digunakan untuk menghitung 
+kemungkinan kelas berdasarkan data input yang diberikan.""")
 
 #XGBoost
 st.title("XGBoost")
