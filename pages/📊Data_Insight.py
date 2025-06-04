@@ -5,6 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from xgboost import plot_importance
 from sklearn.model_selection import train_test_split
+from scipy.stats import norm
 
 from sklearn.metrics import classification_report
 import torch
@@ -218,18 +219,25 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
+num_classes = len(np.unique(y_train)) 
+target_names = X_train.columns.values
+
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 axes = axes.flatten()
-for feature_index in range(num_features):
+
+for feature_index in range(X_train.shape[1]):
     ax = axes[feature_index]
-    feature_name = feature_names[feature_index]
-    x_vals = np.linspace(X_np[:, feature_index].min(), X_np[:, feature_index].max(), 200)
+    feature_name = target_names[feature_index]
+    
+    x_vals = np.linspace(X_train.iloc[:, feature_index].min(), X_train.iloc[:, feature_index].max(), 200)
 
     for cls in range(num_classes):
         mean = gnb.theta_[cls, feature_index]
-        std = np.sqrt(gnb.var_[cls, feature_index])
-        y_vals = norm.pdf(x_vals, mean, std)
-        ax.plot(x_vals, y_vals, label=f"Class {cls} ({class_names[cls]})")
+        std = np.sqrt(gnb.var_[cls, feature_index]) 
+        y_vals = norm.pdf(x_vals, mean, std) 
+        ax.plot(x_vals, y_vals, label=f"Class {cls}")
+
 
     ax.set_title(f"Gaussian Distribution - {feature_name}")
     ax.set_xlabel(feature_name)
