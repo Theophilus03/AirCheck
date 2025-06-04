@@ -200,14 +200,13 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
-st.subheader("Uji Signifikansi Serentak")
+st.markdown("#### Uji Signifikansi Serentak")
+st.markdown("#### Uji Signifikansi Partial")
+st.markdown("#### Uji Multikolinearitas")
 
-st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
-
-st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
 
 #Naive Bayes
-st.markdown("#### Gaussian Naive Bayes")
+st.header(Gaussian Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
@@ -220,7 +219,7 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
-st.subheader("Gaussian Distribution Plot")
+st.markdown("#### Gaussian Distribution Plot")
 num_classes = len(np.unique(st.session_state.y_test)) 
 variable = st.session_state.X_test.columns.values
 
