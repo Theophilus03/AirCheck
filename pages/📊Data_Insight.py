@@ -225,7 +225,7 @@ num_classes = len(np.unique(st.session_state.y_test))
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 axes = axes.flatten()
 
-for feature_index in range(X_train.shape[1]):
+for feature_index in range(st.session_state.X_test.shape[1]):
     ax = axes[feature_index]
     feature_name = target_names[feature_index]
     
