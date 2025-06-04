@@ -14,7 +14,7 @@ from sklearn.naive_bayes import GaussianNB
 import xgboost as xgb
 from pytorch_tabnet.tab_model import TabNetClassifier
 
-from utils.load_data import load_data, explain_countplot
+from utils.load_data import load_data, explain_countplot, explain_heatmap
 
 st.logo("assets/logo.png")
 
@@ -178,6 +178,7 @@ plt.title("Heatmap Korelasi Antar Variabel Numerik")
 plt.tight_layout()
 st.pyplot(plt)
 
+explain_heatmap(corr_matrix)
 
 
 ##analisis model
