@@ -205,6 +205,7 @@ st.markdown("<b><u>Uji Signifikansi Serentak</u></b>", unsafe_allow_html=True)
 st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
 
 st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
+
 #Naive Bayes
 st.title("Gaussian Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
@@ -219,9 +220,7 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
-num_classes = len(np.unique(y_train)) 
-target_names = X_train.columns.values
-
+num_classes = len(np.unique(st.session_state.y_test)) 
 
 fig, axes = plt.subplots(2, 3, figsize=(18, 10))
 axes = axes.flatten()
@@ -230,7 +229,7 @@ for feature_index in range(X_train.shape[1]):
     ax = axes[feature_index]
     feature_name = target_names[feature_index]
     
-    x_vals = np.linspace(X_train.iloc[:, feature_index].min(), X_train.iloc[:, feature_index].max(), 200)
+    x_vals = np.linspace(st.session_state.X_test.iloc[:, feature_index].min(), st.session_state.X_test.iloc[:, feature_index].max(), 200)
 
     for cls in range(num_classes):
         mean = gnb.theta_[cls, feature_index]
