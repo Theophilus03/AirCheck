@@ -98,13 +98,14 @@ def explain_heatmap(corr_matrix):
     for col1 in corr_matrix.columns:
         for col2 in corr_matrix.columns:
             if col1 != col2:  # Menghindari korelasi antara variabel dengan dirinya sendiri
-                corr_value = corr_matrix.loc[col1, col2]
-                if abs(corr_value) > 0.7:
-                    strong_corr_pairs.append((col1, col2, corr_value))
-                elif 0.3 <= abs(corr_value) <= 0.7:
-                    moderate_corr_pairs.append((col1, col2, corr_value))
-                elif abs(corr_value) < 0.3:
-                    weak_corr_pairs.append((col1, col2, corr_value))
+                if col1 < col2:  # Pastikan pasangan hanya diproses satu kali (col1 < col2)
+                    corr_value = corr_matrix.loc[col1, col2]
+                    if abs(corr_value) > 0.7:
+                        strong_corr_pairs.append((col1, col2, corr_value))
+                    elif 0.3 <= abs(corr_value) <= 0.7:
+                        moderate_corr_pairs.append((col1, col2, corr_value))
+                    elif abs(corr_value) < 0.3:
+                        weak_corr_pairs.append((col1, col2, corr_value))
 
     # Menampilkan hasil korelasi dalam kategori
     if strong_corr_pairs:
