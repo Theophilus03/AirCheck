@@ -166,8 +166,19 @@ fig, ax = plt.subplots()
 sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=order)
 ax.set_title('Boxplot Polutan berdasarkan Kategori')
 st.pyplot(fig)
-st.write("kita bisa membandingkan distribusi antar kelompok. Ini bisa menunjukkan apakah ada perbedaan yang 
-signifikan antara kelompok-kelompok tersebut, misalnya perbedaan dalam median, rentang, atau adanya outlier ")
+st.write("kita bisa membandingkan distribusi antar kelompok. Ini bisa menunjukkan apakah ada perbedaan yang signifikan antara kelompok-kelompok tersebut, misalnya perbedaan dalam median, rentang, atau adanya outlier ")
+
+#Heatmap
+numeric_df = df.select_dtypes(include='number')
+corr_matrix = numeric_df.corr()
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap="coolwarm", square=True, linewidths=0.5)
+plt.title("Heatmap Korelasi Antar Variabel Numerik")
+plt.tight_layout()
+st.pyplot(plt)
+
+
 
 ##analisis model
 labels = [0, 1, 2, 3]
