@@ -187,7 +187,7 @@ labels = [0, 1, 2, 3]
 target_names = ['BAIK', 'SEDANG', 'TIDAK SEHAT', 'SANGAT TIDAK SEHAT']
 
 #Ordinal Logistic Regression
-st.title("Ordinal Logistic Regression")
+st.header("Ordinal Logistic Regression")
 y_pred = st.session_state.ordinal_logistic.predict(st.session_state.X_test)
 y_pred = np.argmax(y_pred, axis=1)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
@@ -200,14 +200,14 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
-st.markdown("<b><u>Uji Signifikansi Serentak</u></b>", unsafe_allow_html=True)
+st.subheader("Uji Signifikansi Serentak")
 
 st.markdown("<b><u>Uji Signifikansi Partial</u></b>", unsafe_allow_html=True)
 
 st.markdown("<b><u>Tes VIF</u></b>", unsafe_allow_html=True)
 
 #Naive Bayes
-st.title("Gaussian Naive Bayes")
+st.header("Gaussian Naive Bayes")
 y_pred = st.session_state.naive_bayes.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
@@ -220,6 +220,7 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 #Gaussian Distribution plot
+st.subheader("Gaussian Distribution Plot")
 num_classes = len(np.unique(st.session_state.y_test)) 
 variable = st.session_state.X_test.columns.values
 
@@ -253,7 +254,7 @@ menunjukkan kurva distribusi probabilitas dari setiap kelas, yang digunakan untu
 kemungkinan kelas berdasarkan data input yang diberikan.""")
 
 #XGBoost
-st.title("XGBoost")
+st.header("XGBoost")
 y_pred = st.session_state.xgboost.predict(st.session_state.X_test)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
@@ -273,7 +274,7 @@ st.pyplot(fig)
 
 
 #TabNet
-st.title("TabNet")
+st.header("TabNet")
 y_pred = st.session_state.tabnet.predict(st.session_state.X_test.values)
 result_test = classification_report(st.session_state.y_test, y_pred, digits=4,
                                     labels=labels, target_names=target_names, output_dict=True)
