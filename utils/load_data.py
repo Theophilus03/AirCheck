@@ -87,3 +87,43 @@ def explain_countplot(category_counts):
         explanation.append("Distribusi kategori ini relatif seimbang.")
     
     return " ".join(explanation)
+
+
+
+def explain_heatmap(corr_matrix):
+    strong_corr_pairs = []
+    moderate_corr_pairs = []
+    weak_corr_pairs = []
+
+    for col1 in corr_matrix.columns:
+        for col2 in corr_matrix.columns:
+            if col1 != col2:  # Menghindari korelasi antara variabel dengan dirinya sendiri
+                corr_value = corr_matrix.loc[col1, col2]
+                if abs(corr_value) > 0.7:
+                    strong_corr_pairs.append((col1, col2, corr_value))
+                elif 0.3 <= abs(corr_value) <= 0.7:
+                    moderate_corr_pairs.append((col1, col2, corr_value))
+                elif abs(corr_value) < 0.3:
+                    weak_corr_pairs.append((col1, col2, corr_value))
+
+    # Menampilkan hasil korelasi dalam kategori
+    if strong_corr_pairs:
+        st.write("### Pasangan Variabel dengan Korelasi Kuat (>0.7 atau <-0.7):")
+        for pair in strong_corr_pairs:
+            st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi kuat ({pair[2]:.2f})")
+    else:
+        st.write("Tidak ada pasangan variabel dengan korelasi > 0.7 atau < -0.7")
+
+    if moderate_corr_pairs:
+        st.write("\n### Pasangan Variabel dengan Korelasi Sedang (0.3 - 0.7 atau -0.3 - -0.7):")
+        for pair in moderate_corr_pairs:
+            st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi sedang ({pair[2]:.2f})")
+    else:
+        st.write("Tidak ada pasangan variabel dengan korelasi 0.3 - 0.7 atau -0.3 - -0.7")
+
+    if weak_corr_pairs:
+        st.write("\n### Pasangan Variabel dengan Korelasi Lemah (< 0.3 atau > -0.3):")
+        for pair in weak_corr_pairs:
+            st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi lemah ({pair[2]:.2f})")
+    else:
+        st.write("Tidak ada pasangan variabel dengan korelasi < 0.3 atau > -0.3")
