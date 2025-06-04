@@ -109,22 +109,22 @@ def explain_heatmap(corr_matrix):
 
     # Menampilkan hasil korelasi dalam kategori
     if strong_corr_pairs:
-        st.write("### Pasangan Variabel dengan Korelasi Kuat (>0.7 atau <-0.7):")
+        st.write("### Pasangan Variabel dengan Korelasi Kuat (|Korelasi| > 0.7):")
         for pair in strong_corr_pairs:
             st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi kuat ({pair[2]:.2f})")
     else:
-        st.write("Tidak ada pasangan variabel dengan korelasi > 0.7 atau < -0.7")
+        st.write("Tidak ada pasangan variabel dengan |Korelasi| > 0.7")
 
     if moderate_corr_pairs:
-        st.write("\n### Pasangan Variabel dengan Korelasi Sedang (0.3 - 0.7 atau -0.3 - -0.7):")
+        st.write("\n### Pasangan Variabel dengan Korelasi Sedang (0.3 < |Korelasi| < 0.7):")
         for pair in moderate_corr_pairs:
             st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi sedang ({pair[2]:.2f})")
     else:
-        st.write("Tidak ada pasangan variabel dengan korelasi 0.3 - 0.7 atau -0.3 - -0.7")
+        st.write("Tidak ada pasangan variabel dengan (0.3 < |Korelasi| < 0.7)")
 
     if weak_corr_pairs:
-        st.write("\n### Pasangan Variabel dengan Korelasi Lemah (< 0.3 atau > -0.3):")
+        st.write("\n### Pasangan Variabel dengan Korelasi Lemah (|Korelasi| < 0.3):")
         for pair in weak_corr_pairs:
             st.write(f"Variabel {pair[0]} dan {pair[1]} memiliki korelasi lemah ({pair[2]:.2f})")
     else:
-        st.write("Tidak ada pasangan variabel dengan korelasi < 0.3 atau > -0.3")
+        st.write("Tidak ada pasangan variabel dengan |Korelasi| < 0.3")
