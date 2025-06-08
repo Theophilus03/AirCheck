@@ -1,7 +1,7 @@
-
 import streamlit as st
 import numpy as np
 import pandas as pd
+from utils.load_data import load_data
 
 st.logo("assets/logo.png")
 
