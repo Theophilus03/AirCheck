@@ -70,18 +70,18 @@ if uploaded_file is not None:
         else:
             st.session_state.data2 = split_data(df)
             st.success("Data uploaded and validated successfully!")
-            
-            
-                
+                         
     except Exception as e:
         st.error(f"Error reading file: {e}")
 
+    
 with st.spinner("Loading Data...", show_time=False):
     load_data()
 
 if uploaded_file is not None:
     df = st.session_state.data2
 else:
+    st.write("test")
     df = st.session_state.data
     
 st.write("Data preview:")
