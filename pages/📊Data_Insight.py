@@ -55,7 +55,7 @@ def split_data(df):
     st.session_state.X_test = X_test
     st.session_state.y_train = y_train
     st.session_state.y_test = y_test
-
+    return df_clean
 # Upload CSV file
 uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
 REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
@@ -68,9 +68,9 @@ if uploaded_file is not None:
         if missing_columns:
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
         else:
-            st.session_state.data2 = df
+            st.session_state.data2 = split_data(df)
             st.success("Data uploaded and validated successfully!")
-            split_data(df)
+            
             
                 
     except Exception as e:
