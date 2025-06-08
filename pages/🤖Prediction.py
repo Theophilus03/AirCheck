@@ -21,7 +21,9 @@ def get_input_values():
 
 #Main
 def main():
-    # Title
+        with st.spinner("Loading Data...", show_time=False):
+            load_data()
+        # Title
         st.title('Air Quality Predictor')
         st.subheader('Submit all variables to predict air quality')
 
