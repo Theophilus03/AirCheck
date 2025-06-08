@@ -76,8 +76,8 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"Error reading file: {e}")
 
-
-load_data()
+with st.spinner("Loading Data...", show_time=False):
+    load_data()
 
 df = st.session_state.data
 st.write("Data preview:")
