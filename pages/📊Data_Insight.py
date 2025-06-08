@@ -35,7 +35,6 @@ def split_data(df):
     for col in ['pm10', 'so2', 'co', 'o3', 'no2']:
       df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
     df_clean = df_clean.dropna()
-    st.session_state.data = df_clean
     X = df_clean.drop('kategori', axis=1)
     y = df_clean['kategori']
     
