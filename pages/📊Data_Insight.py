@@ -81,9 +81,9 @@ with st.spinner("Loading Data...", show_time=False):
 
 if uploaded_file is not None:
     df = st.session_state.data2
-    
-if uploaded_file is None:
+else:
     df = st.session_state.data
+    
 st.write("Data preview:")
 st.dataframe(df.head(), hide_index=True)  # Show a preview of the CSV data
 
