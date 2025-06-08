@@ -80,7 +80,6 @@ with st.spinner("Loading Data...", show_time=False):
 if uploaded_file is not None:
     df = st.session_state.data2
 else:
-    st.write("test")
     df = st.session_state.data
     
 st.write("Data preview:")
