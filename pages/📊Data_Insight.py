@@ -68,7 +68,7 @@ if uploaded_file is not None:
         if missing_columns:
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
         else:
-            st.session_state.data = df
+            st.session_state.data2 = df
             st.success("Data uploaded and validated successfully!")
             split_data(df)
             
@@ -79,7 +79,10 @@ if uploaded_file is not None:
 with st.spinner("Loading Data...", show_time=False):
     load_data()
 
-df = st.session_state.data
+if uploaded_file is not None:
+    df = st.session_state.data2
+else:
+    df = st.session_state.data
 st.write("Data preview:")
 st.dataframe(df.head(), hide_index=True)  # Show a preview of the CSV data
 
