@@ -167,6 +167,7 @@ partial_test_df = pd.DataFrame({
     'Variable': p_vals.index,
     'p-value': p_vals.round(4)
 })
+partial_test_df = partial_test_df.iloc[:-3]
 st.dataframe(partial_test_df, hide_index=True)
 
 st.markdown("#### - Uji Multikolinearitas")
