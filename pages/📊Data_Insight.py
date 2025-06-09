@@ -211,8 +211,6 @@ metrics_df = pd.DataFrame({
     "Accuracy": result_test['accuracy']
     })
 st.dataframe(metrics_df, hide_index=True)
-
-st.markdown("<b><u>Feature Importance</u></b>", unsafe_allow_html=True)
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax, title="XGBoost Feature Importances")
@@ -234,7 +232,7 @@ st.dataframe(metrics_df, hide_index=True)
 
 
 #feature importnce
-explainability_matrix, masks = st.session_state.tabnet.explain(st.session_state.X_test.values)
+explainability_matrix, masks = st.session_state.tabnet.explain(st.session_state.X_train.values)
 feat_importances_loaded = explainability_matrix.sum(axis=0)
 feat_importances_loaded = feat_importances_loaded / feat_importances_loaded.sum()
 indices = np.argsort(feat_importances_loaded)
