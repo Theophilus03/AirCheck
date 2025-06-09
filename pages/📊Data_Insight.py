@@ -234,11 +234,14 @@ st.dataframe(metrics_df, hide_index=True)
 
 
 #feature importnce
-feat_importances = st.session_state.tabnet.feature_importances_
-indices = np.argsort(feat_importances)
+explainability_matrix, masks = st.session_state.tabnet.explain(st.session_state.X_test.values)
+feat_importances_loaded = explainability_matrix.sum(axis=0)
+feat_importances_loaded = feat_importances_loaded / feat_importances_loaded.sum()
+indices = np.argsort(feat_importances_loaded)
+
 fig, ax = plt.subplots(figsize=(10, 6))
 plt.title("TabNet feature importances")
-plt.barh(range(len(feat_importances)), feat_importances[indices],color="b", align="center")
-features = list(X_test.columns)
-plt.yticks(range(len(feat_importances)), [features[idx] for idx in indices])
-plt.show();
+plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], color="b", align="center")
+features = list(X_test.columns) # Use the original feature names
+plt.yticks(range(len(feat_importances_loaded)), [features[idx] for idx in indices])
+plt.show()
