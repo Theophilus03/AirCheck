@@ -155,13 +155,12 @@ p_value = stats.chi2.sf(lr_stat, df_diff)
 st.write(f"Likelihood Ratio Statistic: {lr_stat}, p-value: {p_value}")
 
 st.markdown("#### - Uji Signifikansi Partial")
-wald_stats, p_values_wald = st.session_state.ordinal_logistic.wald_test_terms().summary2().tables[1]['P>|z|']
-st.markdown("#### - Uji Multikolinearitas")
-wald_results = pd.DataFrame({
-    "Wald Statistic": wald_stats,
-    "P-value": p_values_wald
+p_vals = st.session_state.ordinal_logistic.pvalues
+partial_test_df = pd.DataFrame({
+    'p-value': p_vals
 })
-st.dataframe(wald_results, hide_index=True)
+st.dataframe(partial_test_df, hide_index=True)
+
 
 #Naive Bayes
 st.header("Gaussian Naive Bayes")
