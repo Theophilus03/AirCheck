@@ -170,10 +170,13 @@ st.dataframe(partial_test_df, hide_index=True)
 
 st.markdown("#### - Uji Multikolinearitas")
 vif_data = pd.DataFrame()
-vif_data["Variable"] = st.session_state.X_train.columns
-vif_data["VIF"] = [variance_inflation_factor(st.session_state.X_train.values, i) for i in range(st.session_state.X_train.shape[1])]
-st.markdown("#### - Uji Multikolinearitas (VIF)")
+X2 = sm.add_constant(st.session_state.X_train)
+
+vif_data["Variable"] = X2.columns
+vif_data["VIF"] = [variance_inflation_factor(X2.values, i) for i in range(X2.shape[1])]
+vif_data = vif_data[vif_data["Variable"] != "const"]
 st.dataframe(vif_data, hide_index=True)
+
 
 #Naive Bayes
 st.header("Gaussian Naive Bayes")
