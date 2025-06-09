@@ -25,7 +25,7 @@ st.subheader("What are we providing?")
 st.markdown(
     """
     - **Data Insight**
-     Kami menyediakan analisis data historis terkait konsentrasi polutan seperti PM10, CO, NO2, O3, dan SO2. Dengan EDA, Anda dapat memahami pola, tren, dan korelasi antar polutan. Anda juga bisa mengupload dataset anda sendiri untuk mendapatkan data insight dan prediksi yang lebih tepat untuk daerah anda.
+     Kami menyediakan analisis data historis terkait konsentrasi polutan seperti PM10, CO, NO2, O3, dan SO2. Dengan data visual, Anda dapat memahami pola, tren, dan korelasi antar polutan. Anda juga bisa mengupload dataset anda sendiri untuk mendapatkan data insight dan prediksi yang lebih tepat untuk daerah anda.
 
     - **Air Quality Predictor**
      Kami menggunakan berbagai model statistik dan machine learning untuk memprediksi kualitas udara berdasarkan data polutan.
