@@ -234,7 +234,7 @@ st.dataframe(metrics_df, hide_index=True)
 
 
 #feature importnce
-feat_importances = clf.feature_importances_
+feat_importances = st.session_state.tabnet.feature_importances_
 indices = np.argsort(feat_importances)
 fig, ax = plt.subplots(figsize=(10, 6))
 plt.title("TabNet feature importances")
