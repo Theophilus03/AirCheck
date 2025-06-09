@@ -7,6 +7,7 @@ from xgboost import plot_importance
 from sklearn.model_selection import train_test_split
 from scipy.stats import norm
 from scipy import stats
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 from sklearn.metrics import classification_report
 import torch
