@@ -234,8 +234,11 @@ st.dataframe(metrics_df, hide_index=True)
 
 
 #feature importnce
-st.markdown("<b><u>Feature Importance</u></b>", unsafe_allow_html=True)
-fig, ax = plt.subplots(figsize=(8, 6))
-st.session_state.tabnet.plot_importance(fig=fig)
-st.pyplot(fig)
-
+feat_importances = clf.feature_importances_
+indices = np.argsort(feat_importances)
+fig, ax = plt.subplots(figsize=(10, 6))
+plt.title("TabNet feature importances")
+plt.barh(range(len(feat_importances)), feat_importances[indices],color="b", align="center")
+features = list(X_test.columns)
+plt.yticks(range(len(feat_importances)), [features[idx] for idx in indices])
+plt.show();
