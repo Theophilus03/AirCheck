@@ -150,7 +150,7 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 
-st.markdown("#### - Uji Signifikansi Serentak")
+st.markdown("#### - Uji Signifikansi Serentak (Uji Likelihood Ratio)")
 lr_stat = 2 * (st.session_state.ordinal_logistic.llf - st.session_state.ordinal_logistic.llnull)
 df_diff = st.session_state.ordinal_logistic.df_model
 p_value = stats.chi2.sf(lr_stat, df_diff)
@@ -159,9 +159,11 @@ lr_test_df = pd.DataFrame({
     'p-value': [p_value]
 })
 st.dataframe(lr_test_df, hide_index=True)
+st.write("""Nilai p-value sebesar 0 yang lebih kecil dari 0.05 dalam uji statistik Likelihood Ratio menunjukkan bahwa 
+ada bukti yang cukup kuat untuk menolak hipotesis nol yang artinya setidaknya ada satu parameter 
+dalam model yang berpengaruh secara signifikan.""")
 
-
-st.markdown("#### - Uji Signifikansi Partial")
+st.markdown("#### - Uji Signifikansi Partial (Uji Wald)")
 p_vals = st.session_state.ordinal_logistic.pvalues
 partial_test_df = pd.DataFrame({
     'Variable': p_vals.index,
@@ -169,8 +171,12 @@ partial_test_df = pd.DataFrame({
 })
 partial_test_df = partial_test_df.iloc[:-3]
 st.dataframe(partial_test_df, hide_index=True)
+st.write("""Nilai p-value yang lebih kecil dari 0,05 dalam uji statistik Wald menunjukkan bahwa terdapat bukti yang 
+cukup kuat untuk menolak hipotesis nol, yang berarti variabel tersebut berpengaruh secara signifikan. Berdasarkan 
+hasil uji, hanya variabel CO yang tidak berpengaruh secara signifikan.""")
 
-st.markdown("#### - Uji Multikolinearitas")
+
+st.markdown("#### - Uji Multikolinearitas (Uji VIF)")
 vif_data = pd.DataFrame()
 X2 = sm.add_constant(st.session_state.X_train)
 
@@ -178,7 +184,8 @@ vif_data["Variable"] = X2.columns
 vif_data["VIF"] = [variance_inflation_factor(X2.values, i) for i in range(X2.shape[1])]
 vif_data = vif_data[vif_data["Variable"] != "const"]
 st.dataframe(vif_data, hide_index=True)
-
+st.write("""Nilai VIF yang lebih besar dari 10 mengindikasikan terjadinya multikolinearitas. 
+Berdasarkan hasil uji, tidak ada variabel yang mengindikasikan terjadinya multikolinearitas""")
 
 #Naive Bayes
 st.header("Gaussian Naive Bayes")
