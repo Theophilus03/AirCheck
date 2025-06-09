@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from xgboost import plot_importance
 from sklearn.model_selection import train_test_split
 from scipy.stats import norm
+from scipy import stats
 
 from sklearn.metrics import classification_report
 import torch
@@ -148,11 +149,10 @@ metrics_df = pd.DataFrame({
 st.dataframe(metrics_df, hide_index=True)
 
 st.markdown("#### - Uji Signifikansi Serentak")
-restricted_model = OrderedModel(st.session_state.y_train, 1, distr='logit')
-restricted_model_fitted = restricted_model.fit()
-lr_stat = 2 * (st.session_state.ordinal_logistic.llf - model_restricted.llf) 
-df_diff = st.session_state.ordinal_logistic.df_model - model_restricted.df_model  
-p_value = 1 - sm.stats.chisqprob(lr_stat, df_diff)
+lr_stat = 2 * (st.session_state.ordinal_logistic.llf - st.session_state.ordinal_logistic.llnull)
+df_diff = st.session_state.ordinal_logistic.df_model
+p_value = stats.chi2.sf(lr_stat, df_diff)
+
 st.write(f"Likelihood Ratio Statistic: {lr_stat}, p-value: {p_value_lr}")
 
 st.markdown("#### - Uji Signifikansi Partial")
