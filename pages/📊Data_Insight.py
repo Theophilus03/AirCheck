@@ -242,6 +242,6 @@ indices = np.argsort(feat_importances_loaded)
 fig, ax = plt.subplots(figsize=(10, 6))
 plt.title("TabNet feature importances")
 plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], color="b", align="center")
-features = list(X_test.columns) # Use the original feature names
+features = list(st.session_state.X_test.columns) # Use the original feature names
 plt.yticks(range(len(feat_importances_loaded)), [features[idx] for idx in indices])
 plt.show()
