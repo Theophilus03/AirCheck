@@ -25,7 +25,7 @@ def main():
             load_data()
         # Title
         st.title('Air Quality Predictor')
-        st.subheader('Submit all variables to predict air quality')
+        st.subheader('Pilihlah model dan mulai prediksi')
 
         # Create sliders for user input
         model_input = get_input_values()
