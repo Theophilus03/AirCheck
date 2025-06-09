@@ -265,7 +265,7 @@ feat_importances_loaded = explainability_matrix.sum(axis=0)
 feat_importances_loaded = feat_importances_loaded / feat_importances_loaded.sum()
 indices = np.argsort(feat_importances_loaded)
 
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots()
 plt.title("TabNet Feature Importances")
 plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], color="b", align="center")
 features = list(st.session_state.X_test.columns) # Use the original feature names
