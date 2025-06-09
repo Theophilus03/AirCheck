@@ -244,4 +244,4 @@ plt.title("TabNet feature importances")
 plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], color="b", align="center")
 features = list(st.session_state.X_test.columns) # Use the original feature names
 plt.yticks(range(len(feat_importances_loaded)), [features[idx] for idx in indices])
-plt.show()
+st.pyplot(plt)
