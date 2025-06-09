@@ -152,15 +152,27 @@ st.markdown("#### - Uji Signifikansi Serentak")
 lr_stat = 2 * (st.session_state.ordinal_logistic.llf - st.session_state.ordinal_logistic.llnull)
 df_diff = st.session_state.ordinal_logistic.df_model
 p_value = stats.chi2.sf(lr_stat, df_diff)
-st.write(f"Likelihood Ratio Statistic: {lr_stat}, p-value: {p_value}")
+lr_test_df = pd.DataFrame({
+    'Likelihood Ratio Statistic': [lr_stat],
+    'p-value': [p_value]
+})
+st.dataframe(lr_test_df, hide_index=True)
+
 
 st.markdown("#### - Uji Signifikansi Partial")
 p_vals = st.session_state.ordinal_logistic.pvalues
 partial_test_df = pd.DataFrame({
-    'p-value': p_vals
+    'Variable': p_vals.index,
+    'p-value': p_vals.round(4)
 })
 st.dataframe(partial_test_df, hide_index=True)
 
+st.markdown("#### - Uji Multikolinearitas")
+vif_data = pd.DataFrame()
+vif_data["Variable"] = st.session_state.X_train.columns
+vif_data["VIF"] = [variance_inflation_factor(st.session_state.X_train.values, i) for i in range(st.session_state.X_train.shape[1])]
+st.markdown("#### - Uji Multikolinearitas (VIF)")
+st.dataframe(vif_data, hide_index=True)
 
 #Naive Bayes
 st.header("Gaussian Naive Bayes")
