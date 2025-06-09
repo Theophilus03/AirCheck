@@ -215,7 +215,7 @@ st.dataframe(metrics_df, hide_index=True)
 st.markdown("<b><u>Feature Importance</u></b>", unsafe_allow_html=True)
 #Important Feature
 fig, ax = plt.subplots(figsize=(8,6))
-plot_importance(st.session_state.xgboost, ax=ax)  # show top 10 features
+plot_importance(st.session_state.xgboost, ax=ax, title="XGBoost Feature Importances")
 st.pyplot(fig)
 
 
@@ -240,7 +240,7 @@ feat_importances_loaded = feat_importances_loaded / feat_importances_loaded.sum(
 indices = np.argsort(feat_importances_loaded)
 
 fig, ax = plt.subplots(figsize=(10, 6))
-plt.title("TabNet feature importances")
+plt.title("TabNet Feature Importances")
 plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], color="b", align="center")
 features = list(st.session_state.X_test.columns) # Use the original feature names
 plt.yticks(range(len(feat_importances_loaded)), [features[idx] for idx in indices])
