@@ -38,25 +38,7 @@ def split_data(df):
     for col in ['pm10', 'so2', 'co', 'o3', 'no2']:
       df_clean[col] = pd.to_numeric(df_clean[col], errors='coerce')
     df_clean = df_clean.dropna()
-    X = df_clean.drop('kategori', axis=1)
-    y = df_clean['kategori']
     
-    #dataset mapping
-    ordinal_mapping = {
-      'BAIK': 0,
-      'SEDANG': 1,
-      'TIDAK SEHAT': 2,
-      'SANGAT TIDAK SEHAT': 3
-    }
-    
-    y_encoded = y.map(ordinal_mapping)
-    
-    #data splitting
-    X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42, stratify=y)
-    st.session_state.X_train = X_train
-    st.session_state.X_test = X_test
-    st.session_state.y_train = y_train
-    st.session_state.y_test = y_test
     return df_clean
 # Upload CSV file
 uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
