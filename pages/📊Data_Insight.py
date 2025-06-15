@@ -229,10 +229,13 @@ metrics_df = pd.DataFrame({
     })
 st.dataframe(metrics_df, hide_index=True)
 #Important Feature
+st.markdown("#### - Feature Importances")
 fig, ax = plt.subplots(figsize=(8,6))
 plot_importance(st.session_state.xgboost, ax=ax, title="XGBoost Feature Importances")
 st.pyplot(fig)
-
+st.write("""XGBoost memberikan bobot tertinggi pada konsentrasi sulfur dioksida dan ozon 
+untuk memprediksi target, dengan nitrogen dioksida, karbon monoksida, dan partikel debu (PM10) 
+memberikan kontribusi yang lebih kecil, tetapi tetap penting dalam prediksi keseluruhan.""")
 
 #TabNet
 st.header("TabNet")
@@ -249,6 +252,7 @@ st.dataframe(metrics_df, hide_index=True)
 
 
 #feature importnce
+st.markdown("#### - Feature Importances")
 explainability_matrix, masks = st.session_state.tabnet.explain(st.session_state.X_train.values)
 feat_importances_loaded = explainability_matrix.sum(axis=0)
 feat_importances_loaded = feat_importances_loaded / feat_importances_loaded.sum()
@@ -260,3 +264,7 @@ plt.barh(range(len(feat_importances_loaded)), feat_importances_loaded[indices], 
 features = list(st.session_state.X_test.columns) # Use the original feature names
 plt.yticks(range(len(feat_importances_loaded)), [features[idx] for idx in indices])
 st.pyplot(plt)
+
+st.write("""TabNet memberikan bobot tertinggi pada konsentrasi partikel debu (PM10) dalam memprediksi target, 
+diikuti oleh sulfur dioksida, nitrogen dioksida, dan ozon yang memberikan kontribusi yang cukup signifikan. 
+Sayangnya, karbon monoksida tidak memberikan pengaruh yang berarti dalam model ini.""")
