@@ -53,12 +53,14 @@ if uploaded_file is not None:
         if missing_columns:
             flag=1
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
+            st.write(missing_columns)
         else:
             flag=0
             st.session_state.data2 = split_data(df)
             st.success("Data uploaded and validated successfully!")
                          
     except Exception as e:
+        flag = 1
         st.error(f"Error reading file: {e}")
 
     
