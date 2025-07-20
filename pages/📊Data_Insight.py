@@ -53,6 +53,9 @@ if uploaded_file is not None:
         if missing_columns:
             flag=1
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
+            st.write("Indexed df.columns:")
+            for i, col in enumerate(df.columns):
+                st.write(f"{i}: {col}")
         else:
             flag=0
             st.session_state.data2 = split_data(df)
