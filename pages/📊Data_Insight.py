@@ -54,6 +54,7 @@ if uploaded_file is not None:
             flag=1
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
             st.write(missing_columns)
+            st.write(df.columns)
         else:
             flag=0
             st.session_state.data2 = split_data(df)
