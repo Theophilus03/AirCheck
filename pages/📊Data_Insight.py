@@ -56,7 +56,7 @@ if uploaded_file is not None:
 
         else:
             flag=0
-            st.session_state.data2 = split_data(df)
+            st.session_state.data2 = split_data(df_tmp)
             st.success("Data uploaded and validated successfully!")
                          
     except Exception as e:
