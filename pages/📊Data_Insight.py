@@ -70,6 +70,7 @@ with st.spinner("Loading Data...", show_time=False):
 if uploaded_file is not None:
     if flag==0:
         df = st.session_state.data2
+    df = st.session_state.data
 else:
     df = st.session_state.data
     
