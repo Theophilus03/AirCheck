@@ -47,15 +47,13 @@ REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
 flag=0
 if uploaded_file is not None:
     try:
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file, sep=';')
         missing_columns = [col for col in REQUIRED_COLUMNS if col not in df.columns]
 
         if missing_columns:
             flag=1
             st.error(f"Missing required columns: {', '.join(missing_columns)}")
-            st.write("Indexed df.columns:")
-            for i, col in enumerate(df.columns):
-                st.write(f"{i}: {col}\n")
+
         else:
             flag=0
             st.session_state.data2 = split_data(df)
