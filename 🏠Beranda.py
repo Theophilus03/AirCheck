@@ -17,22 +17,22 @@ title_text = "AirCheck"
 st.markdown(f'<img src="{icon_url}" style="vertical-align:middle; display:inline; margin-right:10px; width:50px; height:50px;"> <span style="font-size: 40px; vertical-align:middle;"><strong>{title_text}</strong></span>', unsafe_allow_html=True)
 
 # First section: What is AirCheck?
-st.subheader("What is AirCheck?")
+st.subheader("Apa itu AirCheck?")
 st.write("AirCheck adalah platform analisis kualitas udara yang menggunakan data konsentrasi polutan untuk memberikan wawasan mendalam tentang kondisi udara.")
 
 # Second section: What do we provide?
-st.subheader("What are we providing?")
+st.subheader("Fitur yang Kami Sediakan")
 st.markdown(
     """
-    - **Data Insight**
+    - **Analisis**
      Kami menyediakan analisis data historis terkait konsentrasi polutan seperti PM10, CO, NO2, O3, dan SO2. Dengan data visual, Anda dapat memahami pola, tren, dan korelasi antar polutan. Anda juga bisa mengupload dataset anda sendiri untuk mendapatkan data insight dan prediksi yang lebih tepat untuk daerah anda.
 
-    - **Air Quality Predictor**
+    - **Prediktor Kualitas Udara**
      Kami menggunakan berbagai model statistik dan machine learning untuk memprediksi kualitas udara berdasarkan data polutan.
     """
 )
 
-st.subheader("Data Source?")
+st.subheader("Sumber Data?")
 st.markdown(
     """
 Data kualitas udara diambil dari Provinsi DKI Jakarta dengan sampel yang digunakan mencakup data dari tahun 2018 hingga 2024, 
