@@ -27,7 +27,7 @@ st.set_page_config(
     page_icon="assets/logo.png"
 )
 
-st.title("Data Insight")
+st.title("Analisis")
 
 
 def split_data(df):
@@ -52,19 +52,19 @@ if uploaded_file is not None:
 
         if missing_columns:
             flag=1
-            st.error(f"Missing required columns: {', '.join(missing_columns)}")
+            st.error(f"Variabel yang kurang: {', '.join(missing_columns)}")
 
         else:
             flag=0
             st.session_state.data2 = split_data(df_tmp)
-            st.success("Data uploaded and validated successfully!")
+            st.success("Data berhasil diupload and divalidasi!")
                          
     except Exception as e:
         flag = 1
         st.error(f"Error reading file: {e}")
 
     
-with st.spinner("Loading Data...", show_time=False):
+with st.spinner("Memuat Data...", show_time=False):
     load_data()
 
 if uploaded_file is not None and flag==0:
@@ -72,8 +72,8 @@ if uploaded_file is not None and flag==0:
 else:
     df = st.session_state.data
     
-st.write("Data preview:")
-st.dataframe(df.head(), hide_index=True)  # Show a preview of the CSV data
+st.write("Cuplikan Data:")
+st.dataframe(df.tail(), hide_index=True)  # Show a preview of the CSV data
 
 category_counts = df['kategori'].value_counts()
 
@@ -86,9 +86,9 @@ for p in ax.patches:
     ax.text(p.get_x() + p.get_width() / 2, p.get_height() + 1, 
             str(count), ha='center', va='bottom')
 
-ax.set_title("Distribution of Air Quality Categories")
-ax.set_xlabel("Category")
-ax.set_ylabel("Count")
+ax.set_title("Distribusi Kategori Kualitas Udara")
+ax.set_xlabel("Kategori")
+ax.set_ylabel("Frekuensi")
 st.pyplot(fig)
 
 explanation_text = explain_countplot(category_counts)
