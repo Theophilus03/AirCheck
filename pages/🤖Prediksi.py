@@ -32,7 +32,7 @@ model_prediction = 0
 
 
 # Model selection dropdown
-model_option = st.selectbox('Model Prediction', ('Ordinal Linear Regression', 'Naive Bayes','XG Boost', 'Tab Net'))
+model_option = st.selectbox('Model Prediksi', ('Ordinal Linear Regression', 'Naive Bayes','XG Boost', 'Tab Net'))
 
 # Predict button
 ordinal_mapping = {
@@ -41,7 +41,7 @@ ordinal_mapping = {
     2: 'TIDAK SEHAT',
     3: 'SANGAT TIDAK SEHAT'
 }
-if st.button('Predict'):
+if st.button('Prediksi'):
   if model_option == 'Ordinal Linear Regression':
     ordianl_logistic = st.session_state.ordinal_logistic
     y_prob = ordianl_logistic.predict(model_input)
