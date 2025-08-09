@@ -20,10 +20,10 @@ def get_input_values():
     return np.array([[pm10, so2, co, o3, no2]])
 
 #Main
-with st.spinner("Loading Data...", show_time=False):
+with st.spinner("Memuat Data...", show_time=False):
     load_data()
 # Title
-st.title('Air Quality Predictor')
+st.title('Prediksi Kualitas Udara')
 st.subheader('Pilih model dan lakukan prediksi kualitas udara')
 
 # Create sliders for user input
