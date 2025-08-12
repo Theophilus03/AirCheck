@@ -104,7 +104,17 @@ fig, ax = plt.subplots()
 sns.boxplot(x='pollutant', y='value', hue='kategori', data=df_long, hue_order=order)
 ax.set_title('Boxplot Polutan berdasarkan Kategori')
 st.pyplot(fig)
-st.write("kita bisa membandingkan distribusi antar kelompok. Ini bisa menunjukkan apakah ada perbedaan yang signifikan antara kelompok-kelompok tersebut, misalnya perbedaan dalam median, rentang, atau adanya outlier ")
+st.write("""Dari boxplot ini, kita bisa membandingkan distribusi antar kelompok kategori kualitas udara (BAIK, SEDANG, TIDAK SEHAT, SANGAT TIDAK SEHAT) untuk setiap jenis polutan (NO₂, SO₂, O₃, PM₁₀, CO). Perbandingan ini dapat menunjukkan apakah ada perbedaan yang signifikan antara kelompok-kelompok tersebut, misalnya:
+
+- Perbedaan median: garis horizontal di dalam kotak menunjukkan nilai tengah (median) dari distribusi masing-masing kelompok. Perbedaan posisi median antar kategori dapat mengindikasikan perbedaan tingkat polutan yang khas pada setiap kategori.
+
+- Perbedaan rentang: panjang kotak (interquartile range, IQR) menunjukkan sebaran data di tengah (antara kuartil pertama dan kuartil ketiga). Rentang yang lebih lebar berarti variasi data lebih tinggi.
+
+- Outlier: titik-titik di luar whisker menunjukkan nilai ekstrim. Banyaknya outlier dapat memberi informasi tentang adanya kejadian polusi yang tidak biasa.
+
+- Simetri atau kemencengan distribusi: jika whisker atas lebih panjang dari whisker bawah (atau sebaliknya), ini menunjukkan distribusi yang miring (skewed).
+
+- Konsistensi antar kategori: dengan melihat pola dari semua polutan, kita dapat melihat apakah kategori kualitas udara konsisten memisahkan tingkat polutan atau tidak. """)
 
 #Heatmap
 numeric_df = df.select_dtypes(include='number')
