@@ -41,7 +41,7 @@ def split_data(df):
     
     return df_clean
 # Upload CSV file
-uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
+uploaded_file = st.sidebar.file_uploader("Unggah file CSV untuk Wawasan Data", type="csv")
 # Download CSV file
 def read_csv_as_bytes(file_path):
     with open(file_path, 'rb') as file:
