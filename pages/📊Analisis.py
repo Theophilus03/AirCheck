@@ -57,6 +57,7 @@ if uploaded_file is not None:
         else:
             flag=0
             st.session_state.data2 = split_data(df_tmp)
+            st.session_state.tabel = df_tmp
             st.success("Data berhasil diupload and divalidasi!")
                          
     except Exception as e:
@@ -69,11 +70,13 @@ with st.spinner("Memuat Data...", show_time=False):
 
 if uploaded_file is not None and flag==0:
         df = st.session_state.data2
+        tabel = st.session_state.tabel2
 else:
     df = st.session_state.data
+    tabel = st.session_state.tabel
     
 st.write("Cuplikan Data:")
-st.dataframe(df.tail(), hide_index=True)  # Show a preview of the CSV data
+st.dataframe(tabel.tail(), hide_index=True)  # Show a preview of the CSV data
 
 category_counts = df['kategori'].value_counts()
 
