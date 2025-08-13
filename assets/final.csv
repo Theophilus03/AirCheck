@@ -7060,18 +7060,19 @@ periode_data,tanggal,pm10,so2,co,o3,no2,max,critical,kategori,lokasi_spku
 202401,,27,13,6,12,7,27,PM10,BAIK,DKI4 Lubang Buaya
 202401,,27,11,10,13,10,27,PM10,BAIK,DKI4 Lubang Buaya
 202401,,50,12,9,22,10,52,PM25,SEDANG,DKI4 Lubang Buaya
-202401,,33,12,9,26,13,33,PM10,BAIK,DKI4 Lubang Buaya
-202401,,N/A,12,6,26,7,48,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,N/A,13,4,28,4,28,O3,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,N/A,22,8,26,8,46,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,N/A,25,4,28,8,33,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,N/A,4,4,16,N/A,26,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,N/A,15,8,17,N/A,46,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,9,21,4,20,4,43,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,10,12,4,22,5,35,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,14,3,6,31,7,31,O3,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,20,12,13,29,15,74,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
-202401,,19,10,6,36,10,60,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
-202401,,14,14,5,25,9,56,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
-202401,,10,8,5,21,5,35,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
-202401,,12,17,5,24,6,33,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,17,33,12,9,26,13,33,PM10,BAIK,DKI4 Lubang Buaya
+202412,18,N/A,12,6,26,7,48,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,19,N/A,13,4,28,4,28,O3,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,20,N/A,22,8,26,8,46,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,21,N/A,25,4,28,8,33,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,22,N/A,4,4,16,N/A,26,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,23,N/A,15,8,17,N/A,46,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,24,9,21,4,20,4,43,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,25,10,12,4,22,5,35,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,26,14,3,6,31,7,31,O3,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,27,20,12,13,29,15,74,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
+202412,28,19,10,6,36,10,60,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
+202412,29,14,14,5,25,9,56,PM25,SEDANG,DKI5 Kebon Jeruk Jakarta Barat
+202412,30,10,8,5,21,5,35,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+202412,31,12,17,5,24,6,33,PM25,BAIK,DKI5 Kebon Jeruk Jakarta Barat
+
