@@ -13,8 +13,9 @@ import torch
 
 def load_data():
     if 'data' not in st.session_state:
-        with st.spinner("Loading Data...", show_time=False):
+        with st.spinner("Memuat Data...", show_time=False):
             df = pd.read_csv('assets/final.csv')
+            st.session_state.tabel = df
             df_clean = df.copy()
             df_clean = df_clean.replace(['-', 'TIDAK ADA DATA', '---'], np.nan)
             df_clean = df_clean[['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']]
