@@ -44,7 +44,7 @@ def split_data(df):
 uploaded_file = st.sidebar.file_uploader("Unggah file CSV untuk Wawasan Data", type="csv")
 st.sidebar.write(
     """
-    Klik tombol "Unduh Dataset" untuk mengunduh dataset yang kami sediakan.
+    mengunduh dataset yang kami sediakan
     """
 )
 # Download CSV file
