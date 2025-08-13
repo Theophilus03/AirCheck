@@ -52,7 +52,7 @@ st.sidebar.download_button(
     data=csv_data,
     file_name="Dataset.csv",
     mime="text/csv",
-    help="Dataset yang digunakan:"
+    icon=":material/download:"
 )
 
 REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
