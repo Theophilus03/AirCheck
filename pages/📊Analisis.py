@@ -42,6 +42,18 @@ def split_data(df):
     return df_clean
 # Upload CSV file
 uploaded_file = st.sidebar.file_uploader("Upload CSV file for Data Insight", type="csv")
+# Download CSV file
+def read_csv_as_bytes(file_path):
+    with open(file_path, 'rb') as file:
+        return file.read()
+csv_data = read_csv_as_bytes('assets/final.csv')
+st.sidebar.download_button(
+    label="Unduh Dataset",
+    data=csv_data,
+    file_name="Dataset.csv",
+    mime="text/csv"
+)
+
 REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
 
 flag=0
