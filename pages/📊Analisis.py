@@ -75,7 +75,7 @@ if uploaded_file is not None:
         else:
             flag=0
             st.session_state.data2 = split_data(df_tmp)
-            st.session_state.tabel = df_tmp
+            st.session_state.tabel2 = df_tmp
             st.success("Data berhasil diupload and divalidasi!")
                          
     except Exception as e:
