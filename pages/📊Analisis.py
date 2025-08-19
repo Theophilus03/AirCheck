@@ -65,7 +65,7 @@ REQUIRED_COLUMNS = ['pm10', 'so2', 'co', 'o3', 'no2', 'kategori']
 flag=0
 if uploaded_file is not None:
     try:
-        df_tmp = pd.read_csv(uploaded_file, sep=';')
+        df_tmp = pd.read_csv(uploaded_file)
         missing_columns = [col for col in REQUIRED_COLUMNS if col not in df_tmp.columns]
 
         if missing_columns:
