@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+import pandas as pd
 
 def image_to_base64(img_path):
     with open(img_path, "rb") as image_file:
