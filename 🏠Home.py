@@ -40,3 +40,18 @@ yang diperoleh melalui teknik non-probability sampling (convenience sampling), d
 Data sekunder merupakan data yang didapatkan secara tidak langsung dari objek penelitian yang dimana data tersebut didapatkan dari sebuah situs internet ataupun sebuah referensi.
     """
 )
+
+
+st.subheader("Variabel yang digunakan")
+penjelasan_df = pd.DataFrame({
+    "Variabel": ["PM10", "CO", "NO2", "O3", "SO2"],
+    "Deskripsi": [
+        "Partikulat udara berukuran ≤ 10 mikrometer",
+        "Karbon Monoksida, gas beracun dari pembakaran tidak sempurna",
+        "Nitrogen Dioksida, gas hasil pembakaran kendaraan dan industri",
+        "Ozon di permukaan tanah, hasil reaksi kimia sinar UV dengan polutan",
+        "Sulfur Dioksida, gas dari pembakaran bahan bakar fosil seperti batu bara"
+    ]
+})
+
+st.dataframe(penjelasan_df, hide_index=True)
